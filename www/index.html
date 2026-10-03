@@ -175,7 +175,9 @@ a.btn{display:block;text-decoration:none}
 .dots{display:flex;gap:3px;height:6px}
 .dots i{width:6px;height:6px;border-radius:50%;background:var(--accent)}
 .dots i.w{background:var(--done)}
+.dots i.p{background:none;box-shadow:inset 0 0 0 1.5px var(--accent)}
 .cd.s .dots i{background:var(--on-accent)}
+.cd.s .dots i.p{background:none;box-shadow:inset 0 0 0 1.5px var(--on-accent)}
 .cd.s .dots i.w{background:var(--on-accent);opacity:.55}
 .inl{display:flex;gap:10px;align-items:center}
 .inl input{flex:1;min-width:0;height:52px;padding:0 14px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-family:var(--head);font-weight:700;font-size:22px}
@@ -189,22 +191,108 @@ a.btn{display:block;text-decoration:none}
 .badge{display:inline-block;margin-top:3px;font-family:var(--head);font-weight:700;font-size:16px;padding:1px 10px;border-radius:99px;background:var(--surface2)}
 .badge.up{color:var(--done)}
 .badge.down{color:var(--danger)}
+.weeknav{display:flex;align-items:center;justify-content:space-between;margin:0 0 8px}
+.weeknav .ib{width:36px;height:36px}
+.weeknav .ib svg{width:18px;height:18px}
+.wmid{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px}
+.wtoday{padding:4px 12px;border-radius:99px;background:var(--accent);color:var(--on-accent);font-size:13px;font-weight:600}
+.gsp{width:26px;height:44px;flex:none}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);
   padding:10px 18px;border-radius:99px;font-weight:600;font-size:15px;z-index:40;opacity:0;pointer-events:none;transition:opacity .2s}
 .toast.show{opacity:1}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* ===== v8: profesyonel ana ekran ===== */
+:root{--water:#2A9DF4;--kcal:#F2762E;--navh:calc(66px + env(safe-area-inset-bottom,0px))}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--water:#5CB8FF;--kcal:#FF9A5C}}
+:root[data-theme="dark"]{--water:#5CB8FF;--kcal:#FF9A5C}
+.app{padding:12px 16px calc(var(--navh) + 28px)}
+.hdr{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin:6px 2px 14px}
+.eyebrow{font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+.hdr h1{font-family:var(--head);font-size:34px;font-weight:700;line-height:1.05;margin:2px 0 0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 4px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:12px 14px;box-shadow:0 1px 2px rgba(18,24,38,.05)}
+.card h4{margin:0 0 8px;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.07em;text-transform:uppercase}
+.kbig{font-family:var(--head);font-size:30px;font-weight:700;line-height:1}
+.kbig small{font-size:13px;color:var(--muted);font-family:var(--body);font-weight:500;margin-left:3px}
+.bar{height:10px;border-radius:99px;background:var(--surface2);overflow:hidden;margin:10px 0 7px}
+.bar i{display:block;height:100%;width:0;border-radius:99px;background:var(--kcal);transition:width .4s ease}
+.cap{font-size:12px;color:var(--muted)}
+.wrow{display:flex;gap:10px;align-items:center}
+.glass{width:34px;height:46px;flex:none;color:var(--muted)}
+.wbtns{display:flex;gap:6px;margin-top:9px;align-items:center}
+.wbtn{flex:1;padding:8px 6px;border-radius:12px;background:var(--water);color:#fff;font-weight:700;font-size:14px;white-space:nowrap}
+:root[data-theme="dark"] .wbtn{color:#0F1420}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .wbtn{color:#0F1420}}
+.wmin{width:34px;height:34px;border-radius:12px;background:var(--surface2);display:grid;place-items:center;font-weight:700;font-size:18px;flex:none}
+.wmin svg{width:16px;height:16px}
+.ex{border-radius:16px;box-shadow:0 1px 2px rgba(18,24,38,.05)}
+.ex .kg.sm{font-size:18px;max-width:92px;text-align:right}
+.chk.play{border-color:var(--accent);color:var(--accent)}
+.chk.play svg,.chk.run svg{width:14px;height:14px;margin-left:2px}
+.chk.run{border-color:var(--kcal);color:var(--kcal);animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.chk.run{animation:none}}
+.tbar{display:flex;align-items:center;gap:8px;background:var(--accent);color:var(--on-accent);border-radius:16px;padding:10px 12px;margin:0 0 12px;box-shadow:0 6px 18px rgba(58,77,255,.3)}
+.tbar .ti{flex:1;min-width:0}
+.tbar small{display:block;font-size:11px;opacity:.85}
+.tbar b{display:block;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tbar .tt{font-family:var(--head);font-weight:700;font-size:26px;font-variant-numeric:tabular-nums}
+.tbar button{background:rgba(255,255,255,.22);color:inherit;border-radius:10px;padding:8px 10px;font-weight:600;font-size:13px}
+.tbar button.tx{padding:8px;display:grid;place-items:center}
+.tbar button.tx svg{width:16px;height:16px}
+.seg{display:flex;gap:6px}
+.seg button{flex:1;padding:11px 4px;border-radius:12px;background:var(--surface2);font-weight:600;font-size:14px}
+.seg button.on{background:var(--accent);color:var(--on-accent)}
+.est{margin:-2px 2px 8px;color:var(--muted);font-size:14px;line-height:1.4}
+.est b{color:var(--kcal)}
+.est span{font-size:12px}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding:6px 8px env(safe-area-inset-bottom,0px)}
+.nav .in{display:flex;max-width:520px;margin:0 auto}
+.nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 0 6px;font-size:11px;font-weight:600;color:var(--muted)}
+.nav button svg{width:24px;height:24px}
+.nav button.on{color:var(--accent)}
+.ov{inset:0 0 var(--navh) 0;z-index:20}
+.sheet{padding-bottom:0}
+.toast{bottom:calc(var(--navh) + 14px)}
+.hrow .hd b{overflow-wrap:anywhere}
 </style>
 </head>
 <body>
 <div class="app">
-  <div class="top">
-    <div><h1>Antrenman Çizelgem</h1><div class="date" id="today"></div></div>
-    <div class="tools">
-      <button class="ib" data-stats="1" aria-label="İstatistikler: kilo ve gelişim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V10M10 19V5M16 19v-7M21 19H3"/></svg></button>
-      <button class="ib" data-cal="open" aria-label="Takvim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></button>
-    </div>
+  <div id="timerbar" class="tbar" style="display:none"></div>
+  <div class="hdr">
+    <div><div class="eyebrow" id="eyebrow">Antrenman Çizelgem</div><h1 id="today"></h1></div>
+    <button class="wtoday" id="wtoday" data-today="1">Bugün</button>
+  </div>
+  <div class="weeknav">
+    <button class="ib" data-wk="-1" aria-label="Önceki hafta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="wmid"><span id="wlabel"></span></div>
+    <button class="ib" data-wk="1" aria-label="Sonraki hafta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
   </div>
   <div class="week" id="week"></div>
+
+  <div class="cards">
+    <div class="card">
+      <h4>Yakılan kalori</h4>
+      <div class="kbig" id="kval"></div>
+      <div class="bar"><i id="kbar"></i></div>
+      <div class="cap" id="kcap"></div>
+    </div>
+    <div class="card">
+      <h4>Su</h4>
+      <div class="wrow">
+        <svg class="glass" viewBox="0 0 48 64" aria-hidden="true"><defs><clipPath id="gc"><path d="M8 6h32l-4 50a5 5 0 0 1-5 4.6H17a5 5 0 0 1-5-4.6z"/></clipPath></defs><rect id="gfill" x="0" y="60" width="48" height="64" fill="var(--water)" clip-path="url(#gc)"/><path d="M8 6h32l-4 50a5 5 0 0 1-5 4.6H17a5 5 0 0 1-5-4.6z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+        <div><div class="kbig" id="wval"></div><div class="cap" id="wcap"></div></div>
+      </div>
+      <div class="wbtns">
+        <button class="wbtn" id="wadd" data-wadd="1">+ 250 ml</button>
+        <button class="wmin" data-wundo="1" aria-label="Son eklenen suyu geri al">−</button>
+        <button class="wmin" data-wset="1" aria-label="Su ayarları"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></button>
+      </div>
+    </div>
+  </div>
+
   <div class="dayhead">
     <div><h2 id="dayName"></h2><div class="sub" id="daySub"></div></div>
     <button class="plus" id="plusBtn" aria-label="Hareket ekle">
@@ -213,8 +301,14 @@ a.btn{display:block;text-decoration:none}
   </div>
   <div class="list" id="list"></div>
   <div id="foot"></div>
-  <button class="linkbtn" data-bk="open">Yedekle / geri yükle</button>
 </div>
+
+<nav class="nav" aria-label="Ana menü"><div class="in">
+  <button class="on" data-nav="home" data-navk="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7v10M3 10v4M18 7v10M21 10v4M6 12h12"/></svg>Antrenman</button>
+  <button data-cal="open" data-navk="cal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Takvim</button>
+  <button data-stats="1" data-navk="stats"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V10M10 19V5M16 19v-7M21 19H3"/></svg>Gelişim</button>
+  <button data-nav="set" data-navk="set"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg>Ayarlar</button>
+</div></nav>
 
 <div class="ov" id="ov"><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div></div>
 <div class="toast" id="toast"></div>
@@ -376,154 +470,170 @@ function bodySvg(x){
 }
 const labs=l=>l.map(k=>MUS[k]?MUS[k][0]:k).join(', ');
 
-/* ---------- Durum ---------- */
+/* ========== Durum ========== */
 const DAYS=[['Pzt','Pazartesi'],['Sal','Salı'],['Çar','Çarşamba'],['Per','Perşembe'],['Cum','Cuma'],['Cmt','Cumartesi'],['Paz','Pazar']];
 const KEY='antrenman-cizelgesi-v1';
-let S={days:{},custom:[],last:{},log:{},bw:[]};
-try{const r=localStorage.getItem(KEY);if(r){const p=JSON.parse(r);if(p&&p.days)S=Object.assign(S,p);}}catch(e){}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+const DEFCFG={kcalGoal:500,waterGoal:2000,waterStep:250,weight:75,sound:true};
+const mk=()=>({days:{},custom:[],customCardio:[],last:{},log:{},bw:[],plan:{},water:{},cfg:Object.assign({},DEFCFG),timer:null});
+let S=mk(),hadData=false;
+try{const r=localStorage.getItem(KEY);if(r){const p=JSON.parse(r);if(p&&p.days){hadData=true;S=Object.assign(S,p);}}}catch(e){}
+function fixS(){
+  if(!S.days||typeof S.days!=='object')S.days={};
+  if(!S.log||typeof S.log!=='object')S.log={};
+  if(!S.plan||typeof S.plan!=='object')S.plan={};
+  if(!S.water||typeof S.water!=='object')S.water={};
+  if(!S.last||typeof S.last!=='object')S.last={};
+  if(!Array.isArray(S.bw))S.bw=[];
+  if(!Array.isArray(S.custom))S.custom=[];
+  if(!Array.isArray(S.customCardio))S.customCardio=[];
+  S.cfg=Object.assign({},DEFCFG,S.cfg||{});
+  if(!S.timer||typeof S.timer!=='object'||!S.timer.name)S.timer=null;
+}
+fixS();
+function save(){
+  try{
+    for(const k in S.plan){if(!S.plan[k]||!S.plan[k].length)delete S.plan[k];}
+    for(const k in S.water){if(!S.water[k]||!S.water[k].length)delete S.water[k];}
+    localStorage.setItem(KEY,JSON.stringify(S));
+  }catch(e){}
+}
+
+/* ========== Yardımcılar ========== */
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>String(n).replace('.',',');
+const r1=n=>Math.round(n*10)/10;
+const fv=n=>Math.abs(n)>=100?String(Math.round(n)):fmt(r1(n));
+const fb=n=>fmt(r1(n));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const norm=s=>s.toLocaleLowerCase('tr');
 const pad2=n=>String(n).padStart(2,'0');
 const iso=d=>`${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
-function weekKey(){const x=new Date();x.setDate(x.getDate()-((x.getDay()+6)%7));return iso(x);}
-const WK=weekKey();
-const isDone=e=>e.doneWeek===WK;
-function migrate(){
-  Object.values(S.days||{}).forEach(a=>(a||[]).forEach(e=>{if(e.done===true&&!e.doneWeek)e.doneWeek=WK;delete e.done;}));
-  if(!S.log||typeof S.log!=='object')S.log={};
-  if(!Array.isArray(S.bw))S.bw=[];
+const pd=s=>new Date(+s.slice(0,4),+s.slice(5,7)-1,+s.slice(8,10));
+const fdate=s=>pd(s).toLocaleDateString('tr-TR',{day:'numeric',month:'long',year:'numeric'});
+const sdate=s=>pd(s).toLocaleDateString('tr-TR',{day:'numeric',month:'short'});
+const addDays=(ds,n)=>{const b=pd(ds);b.setDate(b.getDate()+n);return iso(b);};
+const weekStart=ds=>addDays(ds,-((pd(ds).getDay()+6)%7));
+const dayIdx=s=>Math.round(Date.UTC(+s.slice(0,4),+s.slice(5,7)-1,+s.slice(8,10))/86400000);
+const idxLabel=t=>new Date(t*86400000).toLocaleDateString('tr-TR',{day:'numeric',month:'short',timeZone:'UTC'});
+const todayDN=()=>dayIdx(iso(new Date()));
+const RANGES={'7':['Haftalık',7],'30':['Aylık',30],'90':['3 Aylık',90],all:['Tümü',0]};
+const inRange=(d,r)=>r==='all'||dayIdx(d)>=todayDN()-(RANGES[r][1]-1);
+const rangeChips=(attr,cur)=>Object.keys(RANGES).map(k=>`<button class="chip${k===cur?' on':''}" data-${attr}="${k}">${RANGES[k][0]}</button>`).join('');
+const planList=D=>S.plan[D]||(S.plan[D]=[]);
+
+function migrate2(){
+  if(S.v>=2)return;
+  const ws=weekStart(iso(new Date()));
+  for(let w=0;w<7;w++){
+    const items=(S.days&&S.days[w])||[];
+    if(items.length){const D=addDays(ws,w);S.plan[D]=(S.plan[D]||[]).concat(items.map(e=>({id:e.id||uid(),name:e.name,kg:e.kg,sets:e.sets,reps:e.reps})));}
+  }
+  S.days={};S.v=2;save();
 }
-migrate();
+
+const now=new Date();
+let viewDate=iso(now),sel=(now.getDay()+6)%7,curRows=[],F=null,bfDate=null;
+function setView(ds){viewDate=ds;sel=(pd(ds).getDay()+6)%7;render();}
+
+const IC={
+ x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+ back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
+ fwd:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>',
+ ok:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+ chart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>',
+ grip:'<svg viewBox="0 0 16 16" fill="currentColor"><circle cx="5" cy="3" r="1.5"/><circle cx="11" cy="3" r="1.5"/><circle cx="5" cy="8" r="1.5"/><circle cx="11" cy="8" r="1.5"/><circle cx="5" cy="13" r="1.5"/><circle cx="11" cy="13" r="1.5"/></svg>',
+ play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>',
+ gear:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg>'
+};
+
+/* ========== Ses ========== */
+let AC=null,pendTap=null;
+function ac(){
+  if(!S.cfg.sound)return null;
+  try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();}catch(e){return null;}
+  return AC;
+}
+function tone(f,t0,d,type,vol){
+  const c=ac();if(!c)return;
+  const o=c.createOscillator(),g=c.createGain(),t=c.currentTime+t0;
+  o.type=type||'sine';o.frequency.value=f;
+  g.gain.setValueAtTime(0.0001,t);
+  g.gain.exponentialRampToValueAtTime(vol||0.1,t+0.012);
+  g.gain.exponentialRampToValueAtTime(0.0001,t+d);
+  o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+d+0.03);
+}
+const SFX={
+  tap(){tone(680,0,0.06,'triangle',0.07);},
+  add(){tone(523,0,0.09,'sine',0.1);tone(784,0.08,0.12,'sine',0.1);},
+  water(){tone(880,0,0.05,'sine',0.1);tone(587,0.05,0.13,'sine',0.1);},
+  undo(){tone(440,0,0.09,'sine',0.08);},
+  done(){[523.25,659.25,783.99,1046.5].forEach((f,i)=>tone(f,i*0.085,0.2,'triangle',0.13));tone(1318.5,0.36,0.45,'sine',0.11);tone(1046.5,0.36,0.45,'sine',0.06);}
+};
+function sfx(n){clearTimeout(pendTap);try{SFX[n]();}catch(e){}}
+
+/* ========== Kardiyo hesapları (MET tabanlı) ========== */
+/* kcal = MET x vücut kilosu (kg) x süre (saat). MET: Compendium of Physical Activities. spd: ortalama hız (km/s) */
+const CARDIO={
+  'Koşu Bandı':{met:8,spd:8},
+  'Bisiklet':{met:7,spd:20},
+  'Kürek':{met:7,spd:12},
+  'Eliptik':{met:5,spd:7},
+  'İp Atlama':{met:11},
+  'Merdiven Makinesi':{met:9},
+  'Burpee':{met:8},
+  'Jumping Jack':{met:8},
+  'Eğimli Yürüyüş':{met:5.3,spd:5},
+  'Battle Rope':{met:8},
+  'Box Jump':{met:8}
+};
+const DEFMET=7;
+const isCardio=n=>!!((INFO[n]&&INFO[n].c==='Kardiyo')||S.customCardio.includes(n));
+const cmet=n=>(CARDIO[n]&&CARDIO[n].met)||DEFMET;
+const cspd=n=>(CARDIO[n]&&CARDIO[n].spd)||0;
+const bodyKg=()=>S.bw.length?S.bw[S.bw.length-1].kg:S.cfg.weight;
+const kcalMin=n=>cmet(n)*bodyKg()/60;
+const CGOAL={time:{u:'dk',step:5,def:30,min:1},dist:{u:'km',step:0.5,def:5,min:0.5},cal:{u:'kcal',step:50,def:300,min:10}};
+function cardioCalc(name,mode,goal){
+  const km=kcalMin(name),spd=cspd(name);
+  if(mode==='time')return{mode,mins:goal,km:0,kcal:Math.round(km*goal)};
+  if(mode==='dist'){const mins=spd?goal/spd*60:0;return{mode,mins,km:goal,kcal:Math.round(km*mins)};}
+  if(mode==='cal')return{mode,mins:km?goal/km:0,km:0,kcal:Math.round(goal)};
+  return{mode:'free',mins:0,km:0,kcal:0};
+}
+
+/* ========== Kayıtlar ========== */
 function logAt(name,t,kg,sets,reps){
   const a=S.log[name]||(S.log[name]=[]);
   const en={d:t,kg:+kg||0,sets:+sets||1,reps:+reps||1};
   const i=a.findIndex(x=>x.d===t);if(i>-1)a[i]=en;else a.push(en);
   a.sort((p,q)=>p.d<q.d?-1:p.d>q.d?1:0);
 }
-function logSet(e){logAt(e.name,iso(new Date()),e.kg,e.sets,e.reps);}
-function logUnset(name){
-  const a=S.log[name];if(!a)return;const i=a.findIndex(x=>x.d===iso(new Date()));if(i>-1)a.splice(i,1);
-}
-
-const now=new Date(), todayIdx=(now.getDay()+6)%7;
-let sel=todayIdx;
-const $=id=>document.getElementById(id);
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const fmt=n=>String(n).replace('.',',');
-const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
-const dayList=i=>S.days[i]||(S.days[i]=[]);
-const norm=s=>s.toLocaleLowerCase('tr');
-$('today').textContent=now.toLocaleDateString('tr-TR',{day:'numeric',month:'long'});
-
-const IC={
- fwd:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>',
- chart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>',
- grip:'<svg viewBox="0 0 16 16" fill="currentColor"><circle cx="5" cy="3" r="1.5"/><circle cx="11" cy="3" r="1.5"/><circle cx="5" cy="8" r="1.5"/><circle cx="11" cy="8" r="1.5"/><circle cx="5" cy="13" r="1.5"/><circle cx="11" cy="13" r="1.5"/></svg>',
- x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
- back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
- ok:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
-};
-
-/* ---------- Ana ekran ---------- */
-function render(){
-  $('week').innerHTML=DAYS.map((d,i)=>{
-    const n=dayList(i).length;
-    return `<button class="dbtn${i===sel?' sel':''}${i===todayIdx?' today':''}" data-day="${i}" aria-label="${d[1]}"><span>${d[0]}</span><span class="cnt">${n?n:''}</span></button>`;
-  }).join('');
-  const items=dayList(sel);
-  $('dayName').textContent=DAYS[sel][1];
-  const sets=items.reduce((a,e)=>a+(+e.sets||0),0);
-  $('daySub').textContent=items.length?`${items.length} hareket · ${sets} set`+(sel===todayIdx?' · bugün':''):(sel===todayIdx?'Bugün':'');
-  if(!items.length){
-    $('list').innerHTML=`<div class="empty"><b>Bu gün henüz boş</b>Sağ üstteki + ile ilk hareketini ekle.</div>`;
-    $('foot').innerHTML='';
+function logCardio(name,t,en,add){
+  const a=S.log[name]||(S.log[name]=[]);
+  const i=a.findIndex(x=>x.d===t);
+  if(add&&i>-1&&a[i].c){
+    a[i].mins=r1(a[i].mins+en.mins);a[i].kcal=Math.round(a[i].kcal+en.kcal);a[i].km=r1((a[i].km||0)+(en.km||0));a[i].mode=en.mode;
   }else{
-    $('list').innerHTML=items.map(e=>`
-      <div class="ex${isDone(e)?' done':''}">
-        <button class="grip" aria-label="Sıralamak için sürükle">${IC.grip}</button>
-        <button class="chk" data-done="${e.id}" aria-label="Tamamlandı olarak işaretle">${IC.ok}</button>
-        <div class="info">
-          <button class="edit" data-edit="${e.id}">
-            <div class="name">${esc(e.name)}</div>
-            <div class="meta">${e.sets} set × ${e.reps} tekrar</div>
-          </button>
-          <button class="hist" data-hist="${esc(e.name)}">${IC.chart}İlerleme</button>
-        </div>
-        <div class="kg">${e.kg>0?fmt(e.kg):'–'}${e.kg>0?'<small>kg</small>':''}</div>
-        <button class="qm" data-info="${esc(e.name)}" aria-label="${esc(e.name)} nasıl yapılır">?</button>
-      </div>`).join('')+`<button class="addrow" data-add="1">+ Hareket ekle</button>`;
-    $('foot').innerHTML=items.some(isDone)?`<button class="clear" data-clear="1">Tamamlananları sıfırla</button>`:'';
+    const x={d:t,c:1,mode:en.mode,mins:r1(en.mins),km:r1(en.km||0),kcal:Math.round(en.kcal)};
+    if(i>-1)a[i]=x;else a.push(x);
   }
+  a.sort((p,q)=>p.d<q.d?-1:p.d>q.d?1:0);
+}
+function logUnset(name,d){
+  const a=S.log[name];if(!a)return;const i=a.findIndex(x=>x.d===d);if(i>-1)a.splice(i,1);
+}
+const logOn=(name,D)=>(S.log[name]||[]).find(x=>x.d===D);
+const kcalDay=D=>{let t=0;for(const n in S.log){const l=S.log[n].find(x=>x.d===D);if(l&&l.c)t+=l.kcal||0;}return t;};
+const waterTotal=D=>(S.water[D]||[]).reduce((a,b)=>a+b,0);
+function logLine(x){
+  if(x.c){
+    const val=x.mode==='dist'&&x.km?fmt(x.km)+' km':x.mode==='cal'?Math.round(x.kcal)+' kcal':fmt(r1(x.mins))+' dk';
+    return{sub:`${Math.round(x.kcal)} kcal`+(x.mode==='free'?' · sayaç':''),val};
+  }
+  return{sub:`${x.sets} set × ${x.reps} tekrar`,val:x.kg>0?fmt(x.kg)+' kg':'–'};
 }
 
-/* ---------- Alt panel ---------- */
-let F=null;
-function openSheet(){$('ov').classList.add('open');}
-function closeSheet(){$('ov').classList.remove('open');F=null;bfDate=null;}
-
-function allNames(){
-  const base=[];
-  for(const c in CATS)CATS[c].forEach(n=>base.push({n,c}));
-  S.custom.forEach(n=>base.push({n,c:'Benim'}));
-  return base;
-}
-let pickCat='Tümü',pickQ='';
-function showPick(){
-  pickCat='Tümü';pickQ='';
-  const cats=['Tümü',...Object.keys(CATS)];
-  if(S.custom.length)cats.push('Benim');
-  $('sheet').innerHTML=`
-    <div class="sh-head"><h3>Hareket seç</h3><button class="ib" data-close="1" aria-label="Kapat">${IC.x}</button></div>
-    <div class="sh-body">
-      ${bfDate?`<div class="note" style="margin:0 2px 10px">Kayıt tarihi: <b>${fdate(bfDate)}</b></div>`:''}
-      <input class="search" id="q" type="search" placeholder="Ara veya yeni hareket yaz…" autocomplete="off">
-      <div class="chips" id="chips">${cats.map(c=>`<button class="chip${c==='Tümü'?' on':''}" data-cat="${c}">${c}</button>`).join('')}</div>
-      <div id="pickList"></div>
-    </div>`;
-  renderPick();
-  openSheet();
-}
-function renderPick(){
-  const q=norm(pickQ.trim());
-  const arr=allNames().filter(x=>(pickCat==='Tümü'||x.c===pickCat)&&(!q||norm(x.n+' '+x.c).includes(q)));
-  let html=arr.length?`<div class="count">${arr.length} hareket</div>`:'';
-  html+=arr.map(x=>`<button class="pick" data-pick="${esc(x.n)}">${esc(x.n)}<span>${x.c==='Benim'?'Özel':x.c}</span></button>`).join('');
-  const exact=allNames().some(x=>norm(x.n)===q);
-  if(q&&!exact)html+=`<button class="pick new" data-new="${esc(pickQ.trim())}">+ “${esc(pickQ.trim())}” hareketini oluştur</button>`;
-  if(!arr.length&&!q)html='<div class="nores">Sonuç yok.</div>';
-  $('pickList').innerHTML=html;
-}
-
-function showForm(f){
-  F=f;
-  const lastInfo=S.last[f.name];
-  const isEdit=!!f.editId;
-  $('sheet').innerHTML=`
-    <div class="sh-head">
-      <button class="ib" data-${isEdit?'close':'backpick'}="1" aria-label="Geri">${isEdit?IC.x:IC.back}</button>
-      <h3 style="flex:1;margin:0 4px">${esc(f.name)}</h3>
-      <button class="qm" data-info="${esc(f.name)}" aria-label="Nasıl yapılır">?</button>
-    </div>
-    <div class="sh-body">
-      <div class="field"><label for="f_kg">Ağırlık (kg)</label>
-        <div class="stp"><button data-step="kg:-2.5" aria-label="Azalt">−</button>
-          <input id="f_kg" type="text" inputmode="decimal" value="${fmt(f.kg)}">
-          <button data-step="kg:2.5" aria-label="Artır">+</button></div>
-        ${lastInfo&&!isEdit?`<div class="last">Son seferki: ${fmt(lastInfo.kg)} kg · ${lastInfo.sets}×${lastInfo.reps}</div>`:''}
-      </div>
-      <div class="two">
-        <div class="field"><label for="f_sets">Set</label>
-          <div class="stp"><button data-step="sets:-1" aria-label="Azalt">−</button><input id="f_sets" type="text" inputmode="numeric" value="${f.sets}"><button data-step="sets:1" aria-label="Artır">+</button></div></div>
-        <div class="field"><label for="f_reps">Tekrar</label>
-          <div class="stp"><button data-step="reps:-1" aria-label="Azalt">−</button><input id="f_reps" type="text" inputmode="numeric" value="${f.reps}"><button data-step="reps:1" aria-label="Artır">+</button></div></div>
-      </div>
-      <div class="actions">
-        ${isEdit
-          ?`<button class="btn pri" data-save="close">Kaydet</button><button class="btn del" data-del="1">Hareketi sil</button>`
-          :`<button class="btn pri" data-save="again">Kaydet ve başka hareket ekle</button><button class="btn sec" data-save="close">Kaydet ve bitir</button>`}
-      </div>
-    </div>`;
-  openSheet();
-}
 
 /* ---------- Hareket anlatımı (?) ---------- */
 function showInfo(name){
@@ -557,26 +667,6 @@ function showInfo(name){
   openSheet();
 }
 
-/* ---------- İlerleme grafiği ---------- */
-let progName='',progMetric='kg';
-const METR={kg:['Ağırlık','kg'],rm:['Tahmini 1RM','kg'],vol:['Hacim','kg'],rep:['Toplam tekrar','tekrar']};
-const mval=(en,m)=>m==='kg'?en.kg:m==='rm'?en.kg*(1+en.reps/30):m==='vol'?en.kg*en.sets*en.reps:en.sets*en.reps;
-const r1=n=>Math.round(n*10)/10;
-const fv=n=>Math.abs(n)>=100?String(Math.round(n)):fmt(r1(n));
-const pd=s=>new Date(+s.slice(0,4),+s.slice(5,7)-1,+s.slice(8,10));
-const fdate=s=>pd(s).toLocaleDateString('tr-TR',{day:'numeric',month:'long',year:'numeric'});
-const sdate=s=>pd(s).toLocaleDateString('tr-TR',{day:'numeric',month:'short'});
-
-/* ---------- Tarih ve aralık yardımcıları ---------- */
-const dayIdx=s=>Math.round(Date.UTC(+s.slice(0,4),+s.slice(5,7)-1,+s.slice(8,10))/86400000);
-const idxLabel=t=>new Date(t*86400000).toLocaleDateString('tr-TR',{day:'numeric',month:'short',timeZone:'UTC'});
-const RANGES={'7':['Haftalık',7],'30':['Aylık',30],'90':['3 Aylık',90],all:['Tümü',0]};
-const todayDN=()=>dayIdx(iso(new Date()));
-const inRange=(d,r)=>r==='all'||dayIdx(d)>=todayDN()-(RANGES[r][1]-1);
-const rangeChips=(attr,cur)=>Object.keys(RANGES).map(k=>`<button class="chip${k===cur?' on':''}" data-${attr}="${k}">${RANGES[k][0]}</button>`).join('');
-const fb=n=>fmt(r1(n));
-let bfDate=null,progRange='all';
-
 /* ---------- Çizgi grafik (tarih ölçekli) ---------- */
 function chartSvg(pts,range,f){
   f=f||fv;
@@ -605,18 +695,379 @@ function chartSvg(pts,range,f){
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Çizgi grafik">${g}${area}${n>1?`<path class="ln" d="${line}"/>`:''}${dots}${lab}${xl}</svg>`;
 }
 
-/* ---------- Hareket ilerlemesi ---------- */
+
+/* ========== Ana ekran ========== */
+const MLBL={time:'Süre hedefi',dist:'Mesafe hedefi',cal:'Kalori hedefi',free:'Hedefsiz'};
+function dayRows(D){
+  const tpl=S.plan[D]||[],rows=[];
+  tpl.forEach(e=>{
+    const l=logOn(e.name,D);
+    if(e.cardio){
+      const lc=l&&l.c?l:null;
+      const c=lc||cardioCalc(e.name,e.mode,e.goal);
+      rows.push({kind:'plan',id:e.id,name:e.name,cardio:true,mode:lc?lc.mode:e.mode,goal:e.goal,done:!!lc,mins:c.mins,km:c.km,kcal:c.kcal});
+    }else{
+      rows.push({kind:'plan',id:e.id,name:e.name,kg:l?l.kg:e.kg,sets:l?l.sets:e.sets,reps:l?l.reps:e.reps,done:!!l});
+    }
+  });
+  const names=new Set(tpl.map(e=>e.name));
+  for(const n in S.log){
+    if(names.has(n))continue;
+    const l=S.log[n].find(x=>x.d===D);if(!l)continue;
+    if(l.c){
+      const goal=l.mode==='dist'?l.km:l.mode==='cal'?l.kcal:l.mins;
+      rows.push({kind:'extra',id:'x:'+n,name:n,cardio:true,mode:l.mode,goal,done:true,mins:l.mins,km:l.km,kcal:l.kcal});
+    }else{
+      rows.push({kind:'extra',id:'x:'+n,name:n,kg:l.kg,sets:l.sets,reps:l.reps,done:true});
+    }
+  }
+  return rows;
+}
+function goalTxt(e){
+  if(e.mode==='time')return fmt(e.goal)+' dk';
+  if(e.mode==='dist')return fmt(e.goal)+' km';
+  if(e.mode==='cal')return fmt(e.goal)+' kcal';
+  return 'Hedefsiz';
+}
+function rowHtml(e){
+  const timerOn=S.timer&&S.timer.id===e.id;
+  let lead,meta,val;
+  if(e.cardio){
+    const free=e.mode==='free';
+    val=e.done?logLine({c:1,mode:e.mode,km:e.km,mins:e.mins,kcal:e.kcal}).val:goalTxt(e);
+    meta=e.done?`Yapıldı · ${Math.round(e.kcal)} kcal`+(free?' · sayaç':'')
+      :(free?'Sayaçla süre tutulur':`${MLBL[e.mode]} · ~${Math.round(e.kcal)} kcal`);
+    if(e.kind==='extra')lead=`<span class="chk" aria-label="Yapıldı">${IC.ok}</span>`;
+    else if(free&&!e.done)lead=timerOn?`<span class="chk run" aria-label="Sayaç çalışıyor">${IC.play}</span>`
+      :`<button class="chk play" data-tstart="${esc(e.id)}" aria-label="Sayacı başlat">${IC.play}</button>`;
+    else lead=`<button class="chk" data-done="${esc(e.id)}" aria-label="Tamamlandı olarak işaretle">${IC.ok}</button>`;
+  }else{
+    meta=`${e.sets} set × ${e.reps} tekrar`;
+    val=null;
+    lead=e.kind==='extra'?`<span class="chk" aria-label="Yapıldı">${IC.ok}</span>`
+      :`<button class="chk" data-done="${esc(e.id)}" aria-label="Tamamlandı olarak işaretle">${IC.ok}</button>`;
+  }
+  if(e.kind==='extra')meta+=' · takvimden eklendi';
+  return `
+      <div class="ex${e.done?' done':''}${e.cardio?' cardio':''}">
+        ${e.kind==='plan'?`<button class="grip" aria-label="Sıralamak için sürükle">${IC.grip}</button>`:'<span class="gsp"></span>'}
+        ${lead}
+        <div class="info">
+          <button class="edit" data-edit="${esc(e.id)}">
+            <div class="name">${esc(e.name)}</div>
+            <div class="meta">${meta}</div>
+          </button>
+          <button class="hist" data-hist="${esc(e.name)}">${IC.chart}İlerleme</button>
+        </div>
+        <div class="kg${val!==null?' sm':''}">${val!==null?esc(val):(e.kg>0?fmt(e.kg)+'<small>kg</small>':'–')}</div>
+        <button class="qm" data-info="${esc(e.name)}" aria-label="${esc(e.name)} nasıl yapılır">?</button>
+      </div>`;
+}
+function render(){
+  const todayS=iso(new Date()),ws=weekStart(viewDate);
+  const short=ds=>pd(ds).toLocaleDateString('tr-TR',{day:'numeric',month:'short'});
+  $('today').textContent=pd(viewDate).toLocaleDateString('tr-TR',{day:'numeric',month:'long',year:'numeric'});
+  $('eyebrow').textContent=viewDate===todayS?'Bugün · '+DAYS[sel][1]:DAYS[sel][1];
+  $('wlabel').textContent=short(ws)+' – '+short(addDays(ws,6));
+  $('wtoday').style.display=viewDate===todayS?'none':'';
+  $('week').innerHTML=DAYS.map((d,i)=>{
+    const ds=addDays(ws,i);
+    return `<button class="dbtn${ds===viewDate?' sel':''}${ds===todayS?' today':''}" data-day="${ds}" aria-label="${fdate(ds)}"><span>${d[0]}</span><span class="cnt">${pd(ds).getDate()}</span></button>`;
+  }).join('');
+  curRows=dayRows(viewDate);
+  const items=curRows;
+  $('dayName').textContent=DAYS[sel][1];
+  const sets=items.reduce((a,e)=>a+(e.cardio?0:(+e.sets||0)),0),doneN=items.filter(e=>e.done).length;
+  $('daySub').textContent=items.length?`${items.length} hareket`+(sets?` · ${sets} set`:'')+(doneN?` · ${doneN} yapıldı`:''):'';
+  $('foot').innerHTML='';
+  $('list').innerHTML=items.length?items.map(rowHtml).join('')+`<button class="addrow" data-add="1">+ Hareket ekle</button>`
+    :`<div class="empty"><b>Bu gün henüz boş</b>Sağ üstteki + ile ilk hareketini ekle.</div>`;
+  renderCards();renderTimer();
+}
+function renderCards(){
+  const k=kcalDay(viewDate),g=S.cfg.kcalGoal;
+  $('kval').innerHTML=`${k}<small>kcal</small>`;
+  $('kbar').style.width=Math.min(100,g?k/g*100:0)+'%';
+  $('kcap').textContent=`Hedef ${g} kcal`+(g&&k>=g?' · tamamlandı':'');
+  const w=waterTotal(viewDate),wg=S.cfg.waterGoal;
+  $('wval').innerHTML=`${w}<small>ml</small>`;
+  $('wcap').textContent=`Hedef ${wg} ml`+(wg&&w>=wg?' · tamam':'');
+  $('gfill').setAttribute('y',String(60-54*Math.min(1,wg?w/wg:0)));
+  $('wadd').textContent=`+ ${S.cfg.waterStep} ml`;
+}
+
+/* ========== Sayaç (yalnızca kardiyo, Hedefsiz mod) ========== */
+const tel=()=>S.timer?(S.timer.acc+(S.timer.start?Date.now()-S.timer.start:0)):0;
+const mmss=ms=>{const s=Math.floor(ms/1000),h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return (h?h+':'+pad2(m):pad2(m))+':'+pad2(x);};
+function renderTimer(){
+  const b=$('timerbar');
+  if(!S.timer){b.innerHTML='';b.style.display='none';return;}
+  const run=!!S.timer.start;
+  b.style.display='';
+  b.innerHTML=`<div class="ti"><small>${run?'Sayaç çalışıyor':'Sayaç duraklatıldı'}</small><b>${esc(S.timer.name)}</b></div><div class="tt" id="tt">${mmss(tel())}</div><button data-tpause="1">${run?'Duraklat':'Devam'}</button><button data-tfinish="1">Bitir</button><button class="tx" data-tcancel="1" aria-label="Sayacı iptal et">${IC.x}</button>`;
+}
+setInterval(()=>{if(S.timer){const t=$('tt');if(t)t.textContent=mmss(tel());}},500);
+function startTimer(id){
+  if(S.timer){toast('Önce çalışan sayacı bitir');return;}
+  const e=planList(viewDate).find(x=>x.id===id);if(!e)return;
+  S.timer={id:e.id,name:e.name,date:viewDate,acc:0,start:Date.now()};
+  save();render();sfx('add');
+}
+function pauseTimer(){
+  if(!S.timer)return;
+  if(S.timer.start){S.timer.acc+=Date.now()-S.timer.start;S.timer.start=null;}else S.timer.start=Date.now();
+  save();renderTimer();
+}
+function finishTimer(){
+  const t=S.timer;if(!t)return;
+  const mins=tel()/60000;
+  S.timer=null;
+  if(mins<0.1){save();render();toast('Süre çok kısa, kaydedilmedi');return;}
+  const en={mode:'free',mins,km:0,kcal:kcalMin(t.name)*mins};
+  logCardio(t.name,t.date,en,true);save();render();sfx('done');
+  toast(`${t.name}: ${fv(mins)} dk · ${Math.round(en.kcal)} kcal kaydedildi`);
+}
+function cancelTimer(){S.timer=null;save();render();}
+
+/* ========== Su ========== */
+function addWater(){
+  const D=viewDate,prev=waterTotal(D);
+  (S.water[D]||(S.water[D]=[])).push(S.cfg.waterStep);save();renderCards();
+  if(S.cfg.waterGoal&&prev<S.cfg.waterGoal&&waterTotal(D)>=S.cfg.waterGoal){sfx('done');toast('Su hedefine ulaştın!');}
+  else sfx('water');
+}
+function undoWater(){
+  const a=S.water[viewDate];if(!a||!a.length){toast('Geri alınacak kayıt yok');return;}
+  a.pop();save();renderCards();sfx('undo');
+}
+
+/* ========== Alt panel ========== */
+function setNav(n){document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.navk===n));}
+function openSheet(n){$('ov').classList.add('open');setNav(n||'home');}
+function closeSheet(){$('ov').classList.remove('open');F=null;bfDate=null;setNav('home');render();}
+
+function allNames(){
+  const base=[];
+  for(const c in CATS)CATS[c].forEach(n=>base.push({n,c}));
+  S.custom.forEach(n=>base.push({n,c:'Benim'}));
+  S.customCardio.forEach(n=>base.push({n,c:'Benim'}));
+  return base;
+}
+let pickCat='Tümü',pickQ='';
+function showPick(){
+  pickCat='Tümü';pickQ='';
+  const cats=['Tümü',...Object.keys(CATS)];
+  if(S.custom.length||S.customCardio.length)cats.push('Benim');
+  $('sheet').innerHTML=`
+    <div class="sh-head"><h3>Hareket seç</h3><button class="ib" data-close="1" aria-label="Kapat">${IC.x}</button></div>
+    <div class="sh-body">
+      ${bfDate?`<div class="note" style="margin:0 2px 10px">Kayıt tarihi: <b>${fdate(bfDate)}</b></div>`:''}
+      <input class="search" id="q" type="search" placeholder="Ara veya yeni hareket yaz…" autocomplete="off">
+      <div class="chips" id="chips">${cats.map(c=>`<button class="chip${c==='Tümü'?' on':''}" data-cat="${c}">${c}</button>`).join('')}</div>
+      <div id="pickList"></div>
+    </div>`;
+  renderPick();
+  openSheet();
+}
+function renderPick(){
+  const q=norm(pickQ.trim());
+  const arr=allNames().filter(x=>(pickCat==='Tümü'||x.c===pickCat)&&(!q||norm(x.n+' '+x.c).includes(q)));
+  let html=arr.length?`<div class="count">${arr.length} hareket</div>`:'';
+  html+=arr.map(x=>`<button class="pick" data-pick="${esc(x.n)}">${esc(x.n)}<span>${x.c==='Benim'?(isCardio(x.n)?'Özel kardiyo':'Özel'):x.c}</span></button>`).join('');
+  const exact=allNames().some(x=>norm(x.n)===q);
+  if(q&&!exact){
+    html+=`<button class="pick new" data-new="${esc(pickQ.trim())}">+ “${esc(pickQ.trim())}” hareketini oluştur</button>`;
+    html+=`<button class="pick new" data-newc="${esc(pickQ.trim())}">+ “${esc(pickQ.trim())}” kardiyo olarak oluştur</button>`;
+  }
+  if(!arr.length&&!q)html='<div class="nores">Sonuç yok.</div>';
+  $('pickList').innerHTML=html;
+}
+function openEx(name){
+  const l=S.last[name];
+  if(isCardio(name)){
+    const m=l&&l.cardio?l.mode:'time';
+    showCForm({name,cardio:true,mode:m,goal:m==='free'?0:((l&&l.cardio&&l.goal)||CGOAL[m].def)});
+  }else{
+    const ok=l&&!l.cardio;
+    showForm({name,kg:ok?l.kg:0,sets:ok?l.sets:3,reps:ok?l.reps:10});
+  }
+}
+
+/* --- Ağırlık hareketi formu --- */
+function showForm(f){
+  F=f;
+  const lastInfo=S.last[f.name];
+  const isEdit=!!f.editId;
+  $('sheet').innerHTML=`
+    <div class="sh-head">
+      <button class="ib" data-${isEdit?'close':'backpick'}="1" aria-label="Geri">${isEdit?IC.x:IC.back}</button>
+      <h3 style="flex:1;margin:0 4px">${esc(f.name)}</h3>
+      <button class="qm" data-info="${esc(f.name)}" aria-label="Nasıl yapılır">?</button>
+    </div>
+    <div class="sh-body">
+      <div class="field"><label for="f_kg">Ağırlık (kg)</label>
+        <div class="stp"><button data-stp="f_kg:-2.5" aria-label="Azalt">−</button>
+          <input id="f_kg" data-min="0" type="text" inputmode="decimal" value="${fmt(f.kg)}">
+          <button data-stp="f_kg:2.5" aria-label="Artır">+</button></div>
+        ${lastInfo&&!lastInfo.cardio&&!isEdit?`<div class="last">Son seferki: ${fmt(lastInfo.kg)} kg · ${lastInfo.sets}×${lastInfo.reps}</div>`:''}
+      </div>
+      <div class="two">
+        <div class="field"><label for="f_sets">Set</label>
+          <div class="stp"><button data-stp="f_sets:-1" aria-label="Azalt">−</button><input id="f_sets" data-min="1" type="text" inputmode="numeric" value="${f.sets}"><button data-stp="f_sets:1" aria-label="Artır">+</button></div></div>
+        <div class="field"><label for="f_reps">Tekrar</label>
+          <div class="stp"><button data-stp="f_reps:-1" aria-label="Azalt">−</button><input id="f_reps" data-min="1" type="text" inputmode="numeric" value="${f.reps}"><button data-stp="f_reps:1" aria-label="Artır">+</button></div></div>
+      </div>
+      <div class="actions">
+        ${isEdit
+          ?`<button class="btn pri" data-save="close">Kaydet</button><button class="btn del" data-del="1">Hareketi sil</button>`
+          :`<button class="btn pri" data-save="again">Kaydet ve başka hareket ekle</button><button class="btn sec" data-save="close">Kaydet ve bitir</button>`}
+      </div>
+    </div>`;
+  openSheet();
+}
+function readForm(){
+  const num=(id,def)=>{const v=parseFloat(String($(id).value).replace(',','.'));return isFinite(v)&&v>=0?v:def;};
+  F.kg=num('f_kg',0);F.sets=Math.max(1,Math.round(num('f_sets',1)));F.reps=Math.max(1,Math.round(num('f_reps',1)));
+}
+function afterSave(mode,nm){
+  if(bfDate){
+    if(mode==='again'){showPick();toast(nm+' eklendi');}
+    else{const x=bfDate;bfDate=null;showCal(x);}
+    return;
+  }
+  if(mode==='again'){showPick();toast(nm+' eklendi');}
+  else closeSheet();
+}
+function commit(mode){
+  readForm();
+  const nm=F.name;
+  if(bfDate){
+    logAt(F.name,bfDate,F.kg,F.sets,F.reps);S.last[nm]={kg:F.kg,sets:F.sets,reps:F.reps};save();
+    afterSave(mode,nm);return;
+  }
+  const items=planList(viewDate);
+  if(F.editId){
+    if(F.kind==='extra'){logAt(F.name,viewDate,F.kg,F.sets,F.reps);}
+    else{
+      const e=items.find(x=>x.id===F.editId);
+      if(e){
+        if(logOn(e.name,viewDate))logAt(e.name,viewDate,F.kg,F.sets,F.reps);
+        e.kg=F.kg;e.sets=F.sets;e.reps=F.reps;
+      }
+    }
+  }else{
+    items.push({id:uid(),name:F.name,kg:F.kg,sets:F.sets,reps:F.reps});
+  }
+  S.last[nm]={kg:F.kg,sets:F.sets,reps:F.reps};
+  save();render();
+  afterSave(mode,nm);
+}
+
+/* --- Kardiyo formu (set/tekrar/kg yok: süre, mesafe, kalori veya hedefsiz) --- */
+function cModes(){
+  const m=[['time','Süre'],['dist','Mesafe'],['cal','Kalori']];
+  if(!bfDate&&F.kind!=='extra')m.push(['free','Hedefsiz']);
+  return m.filter(x=>x[0]!=='dist'||cspd(F.name));
+}
+function showCForm(f){
+  F=f;
+  const isEdit=!!f.editId;
+  let av=cModes();
+  if(!av.some(m=>m[0]===F.mode)){
+    const was=F.mode;F.mode=av[0][0];
+    F.goal=(was==='free'&&F.mins)?Math.max(1,Math.round(F.mins)):CGOAL[F.mode].def;
+  }
+  $('sheet').innerHTML=`
+    <div class="sh-head">
+      <button class="ib" data-${isEdit?'close':'backpick'}="1" aria-label="Geri">${isEdit?IC.x:IC.back}</button>
+      <h3 style="flex:1;margin:0 4px">${esc(f.name)}</h3>
+      <button class="qm" data-info="${esc(f.name)}" aria-label="Nasıl yapılır">?</button>
+    </div>
+    <div class="sh-body">
+      <div class="field"><label>Hedef türü</label>
+        <div class="seg" id="cseg">${av.map(m=>`<button data-cmode="${m[0]}" class="${m[0]===F.mode?'on':''}">${m[1]}</button>`).join('')}</div></div>
+      <div id="cbody"></div>
+      <div class="actions">
+        ${isEdit
+          ?`<button class="btn pri" data-save="close">Kaydet</button><button class="btn del" data-del="1">Hareketi sil</button>`
+          :`<button class="btn pri" data-save="again">Kaydet ve başka hareket ekle</button><button class="btn sec" data-save="close">Kaydet ve bitir</button>`}
+      </div>
+    </div>`;
+  renderCBody();
+  openSheet();
+}
+function renderCBody(){
+  const f=F,g=CGOAL[f.mode];let h;
+  if(f.mode==='free'){
+    h=`<div class="tip"><b>Hedefsiz</b>Süre sayaçla tutulur. Kaydettikten sonra hareketin satırındaki ▶ düğmesiyle sayacı başlatırsın. Bitirince süre ve yakılan kalori otomatik kaydedilir. Sayaç uygulama arka plandayken ve ekran kapalıyken de zamanı tutar.</div>`;
+  }else{
+    const lb={time:'Süre (dk)',dist:'Mesafe (km)',cal:'Hedef kalori (kcal)'}[f.mode];
+    h=`<div class="field"><label for="c_goal">${lb}</label>
+      <div class="stp"><button data-stp="c_goal:${-g.step}" aria-label="Azalt">−</button>
+        <input id="c_goal" data-min="${g.min}" type="text" inputmode="decimal" value="${fmt(f.goal||g.def)}">
+        <button data-stp="c_goal:${g.step}" aria-label="Artır">+</button></div></div>
+      <div class="est" id="cest"></div>`;
+  }
+  $('cbody').innerHTML=h;updCEst();
+}
+function updCEst(){
+  const el=$('cest');if(!el||!F)return;
+  const v=parseFloat(String($('c_goal').value).replace(',','.'));
+  if(!isFinite(v)||v<=0){el.textContent='';return;}
+  const c=cardioCalc(F.name,F.mode,v);
+  el.innerHTML=`Tahmini yakılan: <b>~${c.kcal} kcal</b>`+(F.mode!=='time'&&c.mins?` · ~${fv(c.mins)} dk`:'')+` <span>(${fb(bodyKg())} kg vücut ağırlığına göre)</span>`;
+}
+function setCMode(m){
+  const l=S.last[F.name];
+  F.mode=m;F.goal=(l&&l.cardio&&l.mode===m&&l.goal)?l.goal:(CGOAL[m]?CGOAL[m].def:0);
+  document.querySelectorAll('#cseg button').forEach(b=>b.classList.toggle('on',b.dataset.cmode===m));
+  renderCBody();
+}
+function commitCardio(mode){
+  let goal=0;
+  if(F.mode!=='free'){
+    goal=parseFloat(String($('c_goal').value).replace(',','.'));
+    if(!isFinite(goal)||goal<CGOAL[F.mode].min){toast('Geçerli bir değer gir');return;}
+  }
+  const nm=F.name,en=cardioCalc(nm,F.mode,goal);
+  S.last[nm]={cardio:true,mode:F.mode,goal};
+  if(bfDate){logCardio(nm,bfDate,en);save();afterSave(mode,nm);return;}
+  if(F.editId){
+    if(F.kind==='extra'){logCardio(nm,viewDate,en);}
+    else{
+      const e=planList(viewDate).find(x=>x.id===F.editId);
+      if(e){
+        const had=logOn(e.name,viewDate);
+        e.mode=F.mode;e.goal=goal;
+        if(had&&F.mode!=='free')logCardio(e.name,viewDate,en);
+      }
+    }
+    save();render();closeSheet();return;
+  }
+  planList(viewDate).push({id:uid(),name:nm,cardio:true,mode:F.mode,goal});
+  save();render();afterSave(mode,nm);
+}
+
+
+/* ========== Hareket ilerlemesi ========== */
+let progName='',progMetric='kg',progRange='all';
+const METR={kg:['Ağırlık','kg'],rm:['Tahmini 1RM','kg'],vol:['Hacim','kg'],rep:['Toplam tekrar','tekrar']};
+const METC={mins:['Süre','dk'],kcal:['Kalori','kcal'],km:['Mesafe','km']};
+const mval=(x,m)=>x.c?(m==='kcal'?x.kcal:m==='km'?x.km:x.mins)
+  :(m==='kg'?x.kg:m==='rm'?x.kg*(1+x.reps/30):m==='vol'?x.kg*x.sets*x.reps:x.sets*x.reps);
 function showProg(name,m,r){
   progName=name;if(r)progRange=r;
   const a=S.log[name]||[];
-  if(m)progMetric=m;else progMetric=(a.length&&a.every(x=>!x.kg))?'rep':'kg';
+  const cardio=isCardio(name)||a.some(x=>x.c);
+  const MT=cardio?METC:METR;
+  if(m&&MT[m])progMetric=m;else progMetric=cardio?'mins':((a.length&&a.every(x=>!x.kg))?'rep':'kg');
   let body;
   if(!a.length){
-    body=`<div class="empty" style="margin-top:8px"><b>Henüz kayıt yok</b>Bu hareketi çizelgede ✓ ile tamamladığında veya takvimden bir tarihe eklediğinde kilo, set ve tekrar buraya kaydedilir.</div>`;
+    body=`<div class="empty" style="margin-top:8px"><b>Henüz kayıt yok</b>Bu hareketi çizelgede tamamladığında veya takvimden bir tarihe eklediğinde kayıtlar buraya düşer.</div>`;
   }else{
     const fa=a.filter(x=>inRange(x.d,progRange));
-    const unit=METR[progMetric][1];
-    const mchips=Object.keys(METR).map(k=>`<button class="chip${k===progMetric?' on':''}" data-metric="${k}">${METR[k][0]}</button>`).join('');
+    const unit=MT[progMetric][1];
+    const mchips=Object.keys(MT).map(k=>`<button class="chip${k===progMetric?' on':''}" data-metric="${k}">${MT[k][0]}</button>`).join('');
     let mid;
     if(!fa.length){
       mid=`<div class="note" style="margin:6px 2px 4px">Bu aralıkta kayıt yok. Aralığı genişletebilirsin.</div>`;
@@ -634,8 +1085,8 @@ function showProg(name,m,r){
       <div class="chartbox">${chartSvg(pts,progRange)}</div>
       ${pts.length<2?'<div class="note">Çizgi için en az iki kayıt gerekir.</div>':''}`;
     }
-    const rows=[...a.keys()].reverse().map(i=>{const x=a[i];
-      return `<div class="hrow"><div class="hd"><b>${fdate(x.d)}</b><small>${x.sets} set × ${x.reps} tekrar</small></div><div class="hv">${x.kg>0?fmt(x.kg)+' kg':'–'}</div><button class="hx" data-ld="${i}" aria-label="Kaydı sil">${IC.x}</button></div>`;}).join('');
+    const rows=[...a.keys()].reverse().map(i=>{const x=a[i],L=logLine(x);
+      return `<div class="hrow"><div class="hd"><b>${fdate(x.d)}</b><small>${L.sub}</small></div><div class="hv">${L.val}</div><button class="hx" data-ld="${i}" aria-label="Kaydı sil">${IC.x}</button></div>`;}).join('');
     body=`<div class="chips">${mchips}</div><div class="chips">${rangeChips('prange',progRange)}</div>${mid}<div class="hh">Geçmiş</div>${rows}`;
   }
   $('sheet').innerHTML=`
@@ -644,12 +1095,13 @@ function showProg(name,m,r){
   F=null;openSheet();
 }
 
-/* ---------- Takvim ---------- */
+/* ========== Takvim ========== */
 let calY=0,calM=0,calSel='',calItems=[];
 function showCal(sd){
   const b=sd?pd(sd):new Date();
   calSel=sd||iso(new Date());calY=b.getFullYear();calM=b.getMonth();
-  renderCal(false);openSheet();F=null;
+  if(calSel!==viewDate){viewDate=calSel;sel=(pd(calSel).getDay()+6)%7;}
+  renderCal(false);openSheet('cal');F=null;
 }
 function renderCal(keep,jump){
   const old=$('sheet').querySelector('.sh-body');const st=keep&&old?old.scrollTop:0;
@@ -662,15 +1114,16 @@ function renderCal(keep,jump){
   for(let i=0;i<lead;i++)cells+='<div></div>';
   for(let d=1;d<=dim;d++){
     const ds=`${calY}-${pad2(calM+1)}-${pad2(d)}`;
-    cells+=`<button class="cd${ds===calSel?' s':''}${ds===td?' t':''}" data-calday="${ds}" aria-label="${fdate(ds)}"><span>${d}</span><span class="dots">${wk[ds]?'<i></i>':''}${bwd[ds]!==undefined?'<i class="w"></i>':''}</span></button>`;
+    cells+=`<button class="cd${ds===calSel?' s':''}${ds===td?' t':''}" data-calday="${ds}" aria-label="${fdate(ds)}"><span>${d}</span><span class="dots">${wk[ds]?'<i></i>':((S.plan[ds]||[]).length?'<i class="p"></i>':'')}${bwd[ds]!==undefined?'<i class="w"></i>':''}</span></button>`;
   }
   calItems=[];
   for(const n in S.log)S.log[n].forEach((x,i)=>{if(x.d===calSel)calItems.push({n,i,x});});
-  const rows=calItems.map((c,k)=>`<div class="hrow"><div class="hd"><b>${esc(c.n)}</b><small>${c.x.sets} set × ${c.x.reps} tekrar</small></div><div class="hv">${c.x.kg>0?fmt(c.x.kg)+' kg':'–'}</div><button class="hx" data-lgdel="${k}" aria-label="Kaydı sil">${IC.x}</button></div>`).join('')
+  const rows=calItems.map((c,k)=>{const L=logLine(c.x);
+    return `<div class="hrow"><div class="hd"><b>${esc(c.n)}</b><small>${L.sub}</small></div><div class="hv">${L.val}</div><button class="hx" data-lgdel="${k}" aria-label="Kaydı sil">${IC.x}</button></div>`;}).join('')
     ||'<div class="note" style="margin:6px 2px 10px">Bu tarihte antrenman kaydı yok.</div>';
   const wi=(pd(calSel).getDay()+6)%7;
-  const planN=(S.days[wi]||[]).length;
   const bw=S.bw.find(x=>x.d===calSel);
+  const kc=kcalDay(calSel);
   const title=new Date(calY,calM,1).toLocaleDateString('tr-TR',{month:'long',year:'numeric'});
   $('sheet').innerHTML=`
     <div class="sh-head"><h3>Takvim</h3><button class="ib" data-close="1" aria-label="Kapat">${IC.x}</button></div>
@@ -679,10 +1132,11 @@ function renderCal(keep,jump){
       <div class="cgrid">${cells}</div>
       <div class="legend" style="margin:10px 2px 0"><span><span class="dot"></span>Antrenman</span><span><span class="dot" style="background:var(--done)"></span>Vücut kilosu</span></div>
       <div class="hh" id="dayPanel">${fdate(calSel)} · ${DAYS[wi][1]}</div>
+      ${kc?`<div class="note" style="margin:2px 2px 4px">Yakılan kalori: <b>${kc} kcal</b></div>`:''}
       ${rows}
       <div class="actions" style="margin-top:12px">
-        <button class="btn pri" data-caladd="1">+ Bu tarihe hareket ekle</button>
-        ${planN?`<button class="btn sec" data-calplan="1">${DAYS[wi][1]} planını bu tarihe kaydet (${planN} hareket)</button>`:''}
+        <button class="btn pri" data-gotoday="1">Bu günü ana ekranda aç</button>
+        <button class="btn sec" data-caladd="1">+ Bu tarihe hareket ekle</button>
       </div>
       <div class="hh">Vücut kilosu</div>
       <div class="inl" style="margin-top:8px"><input id="bw" type="text" inputmode="decimal" placeholder="kg" value="${bw?fmt(bw.kg):''}" aria-label="Vücut kilosu"><button class="btn pri" data-bwsave="1" data-ctx="cal">Kaydet</button>${bw?`<button class="hx" data-bwdel="${calSel}" data-ctx="cal" aria-label="Kilo kaydını sil">${IC.x}</button>`:''}</div>
@@ -692,21 +1146,29 @@ function renderCal(keep,jump){
   if(jump){const pn=$('dayPanel');if(pn)pn.scrollIntoView({block:'nearest',behavior:'smooth'});}
 }
 
-/* ---------- İstatistikler: vücut kilosu + hareket artışı ---------- */
+/* ========== İstatistikler ========== */
 let statTab='bw',statRange='30';
 function gains(range){
   const out=[];
   for(const name in S.log){
     const a=S.log[name].filter(x=>inRange(x.d,range));if(!a.length)continue;
-    const useKg=a.some(x=>x.kg>0);const val=x=>useKg?x.kg:x.sets*x.reps;
+    const cardio=a.some(x=>x.c);
+    const useKg=a.some(x=>x.kg>0);
+    const val=x=>cardio?(x.mins||0):useKg?x.kg:x.sets*x.reps;
     const f=val(a[0]),l=val(a[a.length-1]);
-    out.push({name,n:a.length,f,l,diff:l-f,unit:useKg?'kg':'tekrar'});
+    out.push({name,n:a.length,f,l,diff:l-f,unit:cardio?'dk':useKg?'kg':'tekrar'});
   }
   out.sort((p,q)=>(q.n>1)-(p.n>1)||q.diff-p.diff);
   return out;
 }
+function kcalSeries(range){
+  const m={};
+  for(const n in S.log)S.log[n].forEach(x=>{if(x.c&&inRange(x.d,range))m[x.d]=(m[x.d]||0)+(x.kcal||0);});
+  return Object.keys(m).sort().map(d=>({d,v:m[d]}));
+}
 function showStats(){
-  const tabs=`<div class="chips"><button class="chip${statTab==='bw'?' on':''}" data-stab="bw">Vücut kilosu</button><button class="chip${statTab==='gain'?' on':''}" data-stab="gain">Hareket artışı</button></div>`;
+  const T=(k,l)=>`<button class="chip${statTab===k?' on':''}" data-stab="${k}">${l}</button>`;
+  const tabs=`<div class="chips">${T('bw','Vücut kilosu')}${T('kcal','Kalori')}${T('gain','Hareket artışı')}</div>`;
   const rch=`<div class="chips">${rangeChips('srange',statRange)}</div>`;
   let body;
   if(statTab==='bw'){
@@ -729,6 +1191,19 @@ function showStats(){
       ${fa.length?`<div class="chartbox">${chartSvg(fa.map(x=>({d:x.d,v:x.kg})),statRange,fb)}</div>`:'<div class="empty" style="margin-top:6px"><b>Bu aralıkta kayıt yok</b>Yukarıdan kilonu ekle veya aralığı genişlet.</div>'}
       ${fa.length===1?'<div class="note">Çizgi için en az iki kayıt gerekir.</div>':''}
       ${rows?`<div class="hh">Kayıtlar</div>${rows}`:''}`;
+  }else if(statTab==='kcal'){
+    const ser=kcalSeries(statRange);
+    const tot=ser.reduce((t,x)=>t+x.v,0),mx=ser.length?Math.max(...ser.map(x=>x.v)):0;
+    const rows=[...ser].reverse().map(x=>`<div class="hrow"><div class="hd"><b>${fdate(x.d)}</b></div><div class="hv">${Math.round(x.v)} kcal</div></div>`).join('');
+    body=`${rch}
+      <div class="stats">
+        <div class="stat"><small>Toplam</small><b>${Math.round(tot)} kcal</b></div>
+        <div class="stat"><small>Günlük ort.</small><b>${ser.length?Math.round(tot/ser.length):0} kcal</b></div>
+        <div class="stat"><small>En yüksek</small><b>${Math.round(mx)} kcal</b></div>
+      </div>
+      ${ser.length?`<div class="chartbox">${chartSvg(ser,statRange,v=>String(Math.round(v)))}</div>`:'<div class="empty" style="margin-top:6px"><b>Bu aralıkta kardiyo kaydı yok</b>Kalori yalnızca kardiyo hareketlerinden hesaplanır.</div>'}
+      ${ser.length===1?'<div class="note">Çizgi için en az iki gün kaydı gerekir.</div>':''}
+      ${rows?`<div class="hh">Günlük yakılan</div>${rows}`:''}`;
   }else{
     const g=gains(statRange);
     const rows=g.map(x=>{
@@ -736,89 +1211,111 @@ function showStats(){
       const txt=x.n<2?'tek kayıt':(x.diff>0?'+':'')+fv(x.diff)+' '+x.unit;
       return `<button class="grow" data-hist="${esc(x.name)}" data-pr="${statRange}"><div class="hd"><b>${esc(x.name)}</b><small>${x.n} kayıt</small></div><div class="rt"><div class="hv">${fv(x.f)} → ${fv(x.l)} ${x.unit}</div><span class="badge ${cls}">${txt}</span></div></button>`;
     }).join('');
-    body=`${rch}<div class="note" style="margin:0 2px 6px">Seçilen aralıktaki ilk ve son kayıt karşılaştırılır. Grafik için bir harekete dokun.</div>`+
-      (rows||'<div class="empty" style="margin-top:6px"><b>Bu aralıkta kayıt yok</b>Hareketleri ✓ ile tamamladıkça veya takvimden ekledikçe burada görünür.</div>');
+    body=`${rch}<div class="note" style="margin:0 2px 6px">Seçilen aralıktaki ilk ve son kayıt karşılaştırılır. Ağırlık hareketlerinde kilo, kardiyoda süre (dk) kullanılır. Grafik için bir harekete dokun.</div>`+
+      (rows||'<div class="empty" style="margin-top:6px"><b>Bu aralıkta kayıt yok</b>Hareketleri tamamladıkça veya takvimden ekledikçe burada görünür.</div>');
   }
   $('sheet').innerHTML=`
-    <div class="sh-head"><h3>İstatistikler</h3><button class="ib" data-close="1" aria-label="Kapat">${IC.x}</button></div>
+    <div class="sh-head"><h3>Gelişim</h3><button class="ib" data-close="1" aria-label="Kapat">${IC.x}</button></div>
     <div class="sh-body">${tabs}${body}</div>`;
-  F=null;openSheet();
+  F=null;openSheet('stats');
 }
 
-/* ---------- Yedekle / geri yükle ---------- */
+/* ========== Ayarlar ve yedek ========== */
+const cfgField=(label,id,val,step,min)=>`<div class="field"><label for="${id}">${label}</label><div class="stp"><button data-stp="${id}:${-step}" aria-label="Azalt">−</button><input id="${id}" data-min="${min}" type="text" inputmode="decimal" value="${fmt(val)}"><button data-stp="${id}:${step}" aria-label="Artır">+</button></div></div>`;
+function showSettings(){
+  const c=S.cfg;
+  $('sheet').innerHTML=`
+    <div class="sh-head"><h3>Ayarlar</h3><button class="ib" data-close="1" aria-label="Kapat">${IC.x}</button></div>
+    <div class="sh-body">
+      <div class="hh" style="margin-top:2px">Günlük hedefler</div>
+      ${cfgField('Kalori hedefi (kcal)','c_kcal',c.kcalGoal,50,50)}
+      ${cfgField('Su hedefi (ml)','c_wg',c.waterGoal,250,250)}
+      ${cfgField('+ tuşuyla eklenen su (ml)','c_ws',c.waterStep,50,10)}
+      <div class="hh">Kalori hesabı</div>
+      ${cfgField('Varsayılan vücut kilosu (kg)','c_w',c.weight,0.5,30)}
+      <div class="note">Vücut kilosu kaydın varsa en son kaydın kullanılır, yoksa bu değer. Kardiyo kalorisi MET değerleriyle kilona göre hesaplanır. Ağırlık antrenmanları kalori çubuğuna eklenmez.</div>
+      <div class="hh">Ses</div>
+      <div class="chips" style="margin-top:6px"><button class="chip${c.sound?' on':''}" data-snd="1">Açık</button><button class="chip${c.sound?'':' on'}" data-snd="0">Kapalı</button></div>
+      <div class="actions"><button class="btn pri" data-cfgsave="1">Kaydet</button><button class="btn sec" data-bk="open">Yedekle / geri yükle</button></div>
+    </div>`;
+  F=null;openSheet('set');
+}
+function saveSettings(){
+  const n=id=>parseFloat(String($(id).value).replace(',','.'));
+  const k=n('c_kcal'),wg=n('c_wg'),ws=n('c_ws'),w=n('c_w');
+  if(!(k>=50)||!(wg>=100)||!(ws>=10)||!(w>=30&&w<=300)){toast('Değerleri kontrol et');return false;}
+  S.cfg.kcalGoal=Math.round(k);S.cfg.waterGoal=Math.round(wg);S.cfg.waterStep=Math.round(ws);S.cfg.weight=r1(w);
+  save();return true;
+}
 let bkArm=false;
 function showBackup(){
   bkArm=false;
   $('sheet').innerHTML=`
     <div class="sh-head"><h3>Yedekle / geri yükle</h3><button class="ib" data-close="1" aria-label="Kapat">${IC.x}</button></div>
     <div class="sh-body">
-      <p style="margin:4px 0 12px;color:var(--muted);line-height:1.45">Çizelgen ve tüm geçmişin tek bir metin olarak yedeklenir. Telefon değiştirirsen veya APK sürümüne geçersen bu metni yapıştırarak verilerini taşıyabilirsin.</p>
+      <p style="margin:4px 0 12px;color:var(--muted);line-height:1.45">Çizelgen, geçmişin, kilo, su ve ayarların tek bir metin olarak yedeklenir. Telefon değiştirirsen veya APK sürümüne geçersen bu metni yapıştırarak verilerini taşıyabilirsin.</p>
       <textarea class="ta" id="bk" spellcheck="false" placeholder="Yedek metni burada görünür. Geri yüklemek için buraya yapıştır."></textarea>
       <div class="actions">
         <button class="btn pri" data-bk="export">Yedeği oluştur ve kopyala</button>
         <button class="btn sec" data-bk="import">Yapıştırdığım yedeği yükle</button>
       </div>
     </div>`;
-  F=null;openSheet();
+  F=null;openSheet('set');
 }
 function importBackup(btn){
   let p;
   try{p=JSON.parse($('bk').value);}catch(e){p=null;}
   if(!p||typeof p!=='object'||!p.days){toast('Geçerli bir yedek metni değil');return;}
   if(!bkArm){bkArm=true;btn.textContent='Mevcut veri silinecek. Onaylamak için tekrar dokun';return;}
-  S=Object.assign({days:{},custom:[],last:{},log:{},bw:[]},p);
-  migrate();save();render();closeSheet();toast('Yedek yüklendi');
+  S=Object.assign(mk(),p);fixS();migrate2();save();closeSheet();toast('Yedek yüklendi');
 }
 
-function readForm(){
-  const num=(id,def)=>{const v=parseFloat(String($(id).value).replace(',','.'));return isFinite(v)&&v>=0?v:def;};
-  F.kg=num('f_kg',0);F.sets=Math.max(1,Math.round(num('f_sets',1)));F.reps=Math.max(1,Math.round(num('f_reps',1)));
-}
-function commit(mode){
-  readForm();
-  if(bfDate){
-    logAt(F.name,bfDate,F.kg,F.sets,F.reps);save();
-    const nm=F.name;
-    if(mode==='again'){showPick();toast(nm+' eklendi');}
-    else{const x=bfDate;bfDate=null;showCal(x);}
-    return;
-  }
-  const items=dayList(sel);
-  if(F.editId){
-    const e=items.find(x=>x.id===F.editId);
-    if(e){e.kg=F.kg;e.sets=F.sets;e.reps=F.reps;if(isDone(e))logSet(e);}
-  }else{
-    items.push({id:uid(),name:F.name,kg:F.kg,sets:F.sets,reps:F.reps,done:false});
-  }
-  S.last[F.name]={kg:F.kg,sets:F.sets,reps:F.reps};
-  const nm=F.name;
-  save();render();
-  if(mode==='again'){showPick();toast(nm+' eklendi');}
-  else closeSheet();
-}
-
-/* ---------- Olaylar ---------- */
+/* ========== Olaylar ========== */
 document.addEventListener('click',ev=>{
   if(ev.target===$('ov')){closeSheet();return;}
   const t=ev.target.closest('button');
   if(!t)return;
+  clearTimeout(pendTap);pendTap=setTimeout(()=>SFX.tap(),0);
   const d=t.dataset;
-  if(d.day!==undefined){sel=+d.day;render();return;}
+  if(d.day!==undefined){setView(d.day);return;}
+  if(d.wk){setView(addDays(viewDate,7*(+d.wk)));return;}
+  if(d.today){setView(iso(new Date()));return;}
+  if(d.nav==='home'){closeSheet();return;}
+  if(d.nav==='set'){showSettings();return;}
+  if(d.stats){showStats();return;}
+  if(d.cal==='open'){showCal(viewDate);return;}
   if(t.id==='plusBtn'||d.add){showPick();return;}
   if(d.info){showInfo(d.info);return;}
-  if(d.done){const e=dayList(sel).find(x=>x.id===d.done);if(e){if(isDone(e)){e.doneWeek=null;logUnset(e.name);}else{e.doneWeek=WK;logSet(e);}save();render();}return;}
-  if(d.edit){const e=dayList(sel).find(x=>x.id===d.edit);if(e)showForm({editId:e.id,name:e.name,kg:e.kg,sets:e.sets,reps:e.reps});return;}
-  if(d.clear){dayList(sel).forEach(e=>e.doneWeek=null);save();render();return;}
+  if(d.done){
+    const e=planList(viewDate).find(x=>x.id===d.done);
+    if(e){
+      if(logOn(e.name,viewDate)){logUnset(e.name,viewDate);save();render();sfx('undo');}
+      else{
+        if(e.cardio)logCardio(e.name,viewDate,cardioCalc(e.name,e.mode,e.goal));
+        else logAt(e.name,viewDate,e.kg,e.sets,e.reps);
+        save();render();sfx('done');toast(DAYS[sel][1]+' ('+sdate(viewDate)+') için kaydedildi');
+      }
+    }
+    return;
+  }
+  if(d.edit){
+    const r=curRows.find(x=>x.id===d.edit);if(!r)return;
+    if(r.cardio){
+      if(r.kind==='plan'){const e=planList(viewDate).find(x=>x.id===r.id);if(e)showCForm({editId:r.id,kind:'plan',name:r.name,cardio:true,mode:e.mode,goal:e.goal});}
+      else showCForm({editId:r.id,kind:'extra',name:r.name,cardio:true,mode:r.mode,goal:r.goal,mins:r.mins});
+    }else showForm({editId:r.id,kind:r.kind,name:r.name,kg:r.kg,sets:r.sets,reps:r.reps});
+    return;
+  }
   if(d.hist){showProg(d.hist,null,d.pr||'all');return;}
   if(d.prange){progRange=d.prange;showProg(progName,progMetric);return;}
-  if(d.stats){showStats();return;}
+  if(d.metric){showProg(progName,d.metric);return;}
+  if(d.ld!==undefined){const a=S.log[progName]||[];a.splice(+d.ld,1);save();showProg(progName,progMetric);return;}
   if(d.stab){statTab=d.stab;showStats();return;}
   if(d.srange){statRange=d.srange;showStats();return;}
-  if(d.cal==='open'){showCal();return;}
   if(d.calnav){calM+=+d.calnav;if(calM<0){calM=11;calY--;}else if(calM>11){calM=0;calY++;}renderCal(true);return;}
-  if(d.calday){calSel=d.calday;renderCal(true,true);return;}
+  if(d.calday){calSel=d.calday;setView(d.calday);renderCal(true,true);return;}
+  if(d.gotoday){setView(calSel);closeSheet();return;}
   if(d.caladd){bfDate=calSel;showPick();return;}
-  if(d.calplan){const wi=(pd(calSel).getDay()+6)%7;const Lp=dayList(wi);Lp.forEach(e=>logAt(e.name,calSel,e.kg,e.sets,e.reps));save();renderCal(true);toast(Lp.length+' hareket kaydedildi');return;}
   if(d.lgdel!==undefined){const c=calItems[+d.lgdel];if(c){S.log[c.n].splice(c.i,1);save();renderCal(true);}return;}
   if(d.bwsave){
     let date,raw;
@@ -830,35 +1327,46 @@ document.addEventListener('click',ev=>{
     toast('Kilo kaydedildi');return;
   }
   if(d.bwdel){S.bw=S.bw.filter(x=>x.d!==d.bwdel);save();if(d.ctx==='cal')renderCal(true);else showStats();return;}
-  if(d.metric){showProg(progName,d.metric);return;}
-  if(d.ld!==undefined){const a=S.log[progName]||[];a.splice(+d.ld,1);save();showProg(progName,progMetric);return;}
+  if(d.close){if(bfDate){const x=bfDate;bfDate=null;showCal(x);}else closeSheet();return;}
+  if(d.cat){pickCat=d.cat;document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.cat===pickCat));renderPick();return;}
+  if(d.pick){openEx(d.pick);return;}
+  if(d.new){const n=d.new;if(!allNames().some(x=>norm(x.n)===norm(n))){S.custom.push(n);save();}openEx(n);return;}
+  if(d.newc){const n=d.newc;if(!allNames().some(x=>norm(x.n)===norm(n))){S.customCardio.push(n);save();}openEx(n);return;}
+  if(d.backpick){showPick();return;}
+  if(d.stp){
+    const [id,v]=d.stp.split(':');const el=$(id);if(!el)return;
+    let cur=parseFloat(String(el.value).replace(',','.'));if(!isFinite(cur))cur=0;
+    cur=Math.max(+(el.dataset.min||0),cur+parseFloat(v));
+    el.value=fmt(Math.round(cur*100)/100);
+    if(id==='c_goal')updCEst();
+    return;
+  }
+  if(d.cmode){setCMode(d.cmode);return;}
+  if(d.save){if(F&&F.cardio)commitCardio(d.save);else commit(d.save);return;}
+  if(d.del){
+    if(F.kind==='extra'){logUnset(F.name,viewDate);}
+    else{const items=planList(viewDate);const i=items.findIndex(x=>x.id===F.editId);if(i>-1){logUnset(items[i].name,viewDate);items.splice(i,1);}}
+    save();closeSheet();return;
+  }
+  if(d.tstart){startTimer(d.tstart);return;}
+  if(d.tpause){pauseTimer();return;}
+  if(d.tfinish){finishTimer();return;}
+  if(d.tcancel){cancelTimer();return;}
+  if(d.wadd){addWater();return;}
+  if(d.wundo){undoWater();return;}
+  if(d.wset){showSettings();return;}
+  if(d.snd!==undefined){S.cfg.sound=d.snd==='1';save();showSettings();if(S.cfg.sound)sfx('add');return;}
+  if(d.cfgsave){if(saveSettings()){closeSheet();toast('Ayarlar kaydedildi');}return;}
   if(d.bk==='open'){showBackup();return;}
   if(d.bk==='export'){const ta=$('bk');ta.value=JSON.stringify(S);ta.focus();ta.select();let ok=false;try{ok=document.execCommand('copy');}catch(e){}toast(ok?'Yedek kopyalandı':'Metni seçip kopyala');return;}
   if(d.bk==='import'){importBackup(t);return;}
-  if(d.close){if(bfDate){const x=bfDate;bfDate=null;showCal(x);}else closeSheet();return;}
-  if(d.cat){pickCat=d.cat;document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.cat===pickCat));renderPick();return;}
-  if(d.pick){const l=S.last[d.pick];showForm({name:d.pick,kg:l?l.kg:0,sets:l?l.sets:3,reps:l?l.reps:10});return;}
-  if(d.new){
-    const n=d.new;
-    if(!allNames().some(x=>norm(x.n)===norm(n))){S.custom.push(n);save();}
-    const l=S.last[n];showForm({name:n,kg:l?l.kg:0,sets:l?l.sets:3,reps:l?l.reps:10});return;
-  }
-  if(d.backpick){showPick();return;}
-  if(d.step){
-    const [k,v]=d.step.split(':');const el=$('f_'+k);
-    let cur=parseFloat(String(el.value).replace(',','.'));if(!isFinite(cur))cur=0;
-    cur=Math.max(k==='kg'?0:1,cur+parseFloat(v));
-    el.value=fmt(Math.round(cur*100)/100);return;
-  }
-  if(d.save){commit(d.save);return;}
-  if(d.del){
-    const items=dayList(sel);const i=items.findIndex(x=>x.id===F.editId);
-    if(i>-1){items.splice(i,1);save();render();}
-    closeSheet();return;
-  }
 });
-document.addEventListener('input',ev=>{if(ev.target.id==='q'){pickQ=ev.target.value;renderPick();}});
+document.addEventListener('input',ev=>{
+  if(ev.target.id==='q'){pickQ=ev.target.value;renderPick();}
+  if(ev.target.id==='c_goal')updCEst();
+});
 document.addEventListener('keydown',ev=>{if(ev.key==='Escape')closeSheet();});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!drag){render();}});
 
 /* ---------- Sürükleyerek sıralama ---------- */
 let drag=null;
@@ -899,7 +1407,7 @@ document.addEventListener('pointermove',ev=>{if(drag){drag.y=ev.clientY;ev.preve
 function endDrag(cancel){
   const d=drag;if(!d)return;
   cancelAnimationFrame(d.raf);drag=null;document.body.style.userSelect='';
-  if(!cancel&&d.to!==d.from){const arr=dayList(sel);const m=arr.splice(d.from,1)[0];arr.splice(d.to,0,m);save();}
+  if(!cancel&&d.to!==d.from){const arr=planList(viewDate);const m=arr.splice(d.from,1)[0];arr.splice(d.to,0,m);save();}
   render();
 }
 document.addEventListener('pointerup',()=>endDrag(false));
@@ -907,6 +1415,9 @@ document.addEventListener('pointercancel',()=>endDrag(true));
 
 let tt;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),1600);}
 
+
+/* ========== Başlangıç ========== */
+if(!hadData)S.v=2;else migrate2();
 render();
 </script>
 </body>
